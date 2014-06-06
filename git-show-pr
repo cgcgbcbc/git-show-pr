@@ -1,0 +1,6 @@
+#!/bin/sh
+
+git show-ref --abbrev | grep refs/pull/origin |
+while read -r line;do
+    echo ${line#*refs} `git log --pretty=format:"%C(yellow)%h %Cred%an %Cblue%ad %Creset%s" -1 --date=short ${line%refs*}`
+done
