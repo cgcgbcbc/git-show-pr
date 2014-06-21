@@ -9,5 +9,5 @@ shell command for showing Github pull request
 
 ## USAGE
 
-0. Follow this [guide](https://help.github.com/articles/checking-out-pull-requests-locally) to setup refspec
+0. add this line `fetch = +refs/pull/*/head:refs/pull/origin/*` to `[remote "origin"]` in `.git/config` to setup refspec
 0. `git show-pr`
