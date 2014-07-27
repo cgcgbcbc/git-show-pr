@@ -1,6 +1,18 @@
 #!/bin/sh
+VERSION="0.1.0"
+version() {
+    echo $VERSION && exit 0
+}
 
-git show-ref --abbrev | grep refs/pull/origin |
-while read -r line;do
-    echo ${line#*refs} `git log --pretty=format:"%C(yellow)%h %Cred%an %Cblue%ad %Creset%s" -1 --date=short ${line%refs*}`
-done
+main() {
+    case "$1" in
+        "-v"|"--version")
+            version
+            ;;
+    esac
+    git show-ref --abbrev | grep refs/pull/origin |
+    while read -r line;do
+        echo ${line#*refs} `git log --pretty=format:"%C(yellow)%h %Cred%an %Cblue%ad %Creset%s" -1 --date=short ${line%refs*}`
+    done
+}
+main "$@"
