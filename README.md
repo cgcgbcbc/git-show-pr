@@ -5,7 +5,7 @@ shell command for showing Github pull request
 
 ## INSTALL
 
-`ln -s git-show-pr /usr/local/bin/git-show-pr`
+`cp -f git-show-pr /usr/local/bin/git-show-pr`
 
 ## USAGE
 
