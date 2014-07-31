@@ -5,10 +5,14 @@ all:
 	@echo "usage: make [install|uninstall]"
 
 install:
-	install -d -m 0755 $(BIN_DIR)
-	install -m 0755 $(COMMANDS) $(BIN_DIR)
+	@mkdir -p ${BIN_DIR}
+	@echo "...installing ${COMMANDS} to ${BIN_DIR}"
+	@install -m 0755 $(COMMANDS) $(BIN_DIR)
+	@echo "done."
 
 uninstall:
-	test -d $(BIN_DIR) && \
+	@echo "..uninstalling ${COMMANDS} from ${BIN_DIR}"
+	@test -d $(BIN_DIR) && \
 	cd $(BIN_DIR) && \
 	rm -f $(COMMANDS)
+	@echo "done."
