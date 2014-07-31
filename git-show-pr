@@ -3,6 +3,13 @@ VERSION="0.1.1"
 version() {
     echo $VERSION && exit 0
 }
+usage() {
+    echo "git-show-pr"
+    echo "usage:"
+    echo "--author=<pattern> :filter pull request by author"
+    echo "--version -v :show version"
+    exit 0
+}
 
 main() {
     git show-ref --abbrev | grep refs/pull/origin |
@@ -10,6 +17,11 @@ main() {
         echo ${line#*refs} `git log --author=$author --pretty=format:"%C(yellow)%h %Cred%an %Cblue%ad %Creset%s" -1 --date=short ${line%refs*}`
     done
 }
+
+if [ $# -gt 1 ]
+then
+    usage
+fi
 
 while test $# != 0
 do
@@ -20,6 +32,9 @@ do
         --author=*)
             author="${1#--author=}"
             main "$author" && exit 0
+            ;;
+        *)
+            usage
             ;;
         --)
             shift
