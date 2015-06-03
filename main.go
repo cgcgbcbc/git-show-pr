@@ -17,9 +17,15 @@ func handleError(err error) {
 }
 
 func main() {
-
-	owner, name, err := getOnwerRepo()
-	handleError(err)
+	var owner, name string
+	var err error
+	if len(os.Args) == 3 {
+		owner = os.Args[1]
+		name = os.Args[2]
+	} else {
+		owner, name, err = getOnwerRepo()
+		handleError(err)
+	}
 
 	fmt.Printf("repo %s/%s ", owner, name)
 

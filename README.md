@@ -9,7 +9,8 @@ git plugin for showing Github pull request, written in go
 
 ## USAGE
 
-0. `git show-pr`
+0. `git show-pr` show pull request for current branch's remote
+0. `git show-pr owner repo` show pull request for `owner/repo`
 
 ## WHY
 
