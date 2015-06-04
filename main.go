@@ -72,7 +72,7 @@ func getPullRequests(token string, owner string, repo string) (pulls []githubapi
 
 func showPullRequest(pulls []githubapi.PullRequest) {
 	for _, pull := range pulls {
-		fmt.Printf("#%d %d/%02d/%02d \x1b[31m%s\x1b[0m %s\n", *pull.Number, pull.CreatedAt.Year(), pull.CreatedAt.Month(), pull.CreatedAt.Day(), *pull.User.Login, *pull.Title)
+		fmt.Printf("#%d %d/%02d/%02d [\x1b[34m%s/%s\x1b[0m] %s\n", *pull.Number, pull.CreatedAt.Year(), pull.CreatedAt.Month(), pull.CreatedAt.Day(), *pull.Head.Repo.Owner.Login, *pull.Head.Repo.Name, *pull.Title)
 	}
 }
 
